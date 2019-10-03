@@ -8,6 +8,7 @@
 #include "graphedge.h"
 #include "chatbot.h"
 
+
 // constructor WITHOUT memory allocation
 ChatBot::ChatBot()
 {
@@ -33,13 +34,14 @@ ChatBot::ChatBot(std::string filename)
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
-
+/*
     // deallocate heap memory
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
         delete _image;
         _image = NULL;
     }
+*/
 }
 
 //// STUDENT CODE
@@ -53,6 +55,8 @@ void ChatBot::ReceiveMessageFromUser(std::string message)
     // loop over all edges and keywords and compute Levenshtein distance to query
     typedef std::pair<GraphEdge *, int> EdgeDist;
     std::vector<EdgeDist> levDists; // format is <ptr,levDist>
+
+
 
     for (size_t i = 0; i < _currentNode->GetNumberOfChildEdges(); ++i)
     {
