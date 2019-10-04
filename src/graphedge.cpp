@@ -9,11 +9,13 @@ GraphEdge::GraphEdge(int id)
 void GraphEdge::SetChildNode(GraphNode *childNode)
 {
     _childNode = childNode;
+    _childNode->AddEdgeToParentNode(this);
 }
 
 void GraphEdge::SetParentNode(GraphNode *parentNode)
 {
     _parentNode = parentNode;
+    _parentNode->AddEdgeToChildNode(this);
 }
 
 void GraphEdge::AddToken(std::string token)
