@@ -33,7 +33,10 @@ private:
 
     // proprietary functions
     template <typename T>
-    void AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T &element);
+    void AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T *element);
+
+    template <typename T>
+    T *AddItemToElementList(int id, std::vector<T *> &elements);
 
 public:
     // constructor / destructor
