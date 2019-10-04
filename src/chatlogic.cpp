@@ -18,7 +18,7 @@ ChatLogic::ChatLogic()
     ////
 
     // create instance of chatbot
-    _chatBot = new ChatBot("../images/chatbot.png");
+   _chatBot = new ChatBot();
 
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
     _chatBot->SetChatLogicHandle(this);
@@ -33,12 +33,12 @@ ChatLogic::~ChatLogic()
     ////
 
     // delete chatbot instance
+    std::cout << "ChatBot Destructor" << std::endl;
     delete _chatBot;
 
     // delete all nodes
-    for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
-    {
-        delete *it;
+    for(auto it: _nodes){
+        delete it;
     }
 
     // delete all edges
