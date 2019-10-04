@@ -198,7 +198,7 @@ ChatBotPanelDialogItem::ChatBotPanelDialogItem(wxPanel *parent, wxString text, b
     wxString image = isFromUser == true? imgBasePath + "user.png" : imgBasePath + "chatbot.png";
 
     // create image and text
-    _chatBotImg = new wxStaticBitmap(this, wxID_ANY, wxBitmap(image, wxBITMAP_TYPE_PNG), wxPoint(-2, -2), wxSize(-2, -2));
+    _chatBotImg = new wxStaticBitmap(this, wxID_ANY, wxBitmap(image, wxBITMAP_TYPE_PNG), wxPoint(-1, -1), wxSize(-1, -1));
     _chatBotTxt = new wxStaticText(this, wxID_ANY, text, wxPoint(-1, -1), wxSize(150, -1), wxALIGN_CENTRE | wxBORDER_NONE);
     _chatBotTxt->SetForegroundColour(isFromUser == true ? wxColor(*wxBLACK) : wxColor(*wxWHITE));
 

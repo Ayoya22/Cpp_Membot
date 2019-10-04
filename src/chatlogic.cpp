@@ -128,7 +128,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                         // check if node with this ID exists already
                         //auto newNode = std::find_if(_nodes.begin(), _nodes.end(), [&id](GraphNode *node) { return node->GetID() == id; });
                         GraphNode *node = AddItemToElementList<GraphNode>(std::stoi(idToken->second), _nodes);
-                        AddAllTokensToElement("RESPONSE", tokens, node);
+                        AddAllTokensToElement("ANSWER", tokens, node);
 
                         // create new element if ID does not yet exist
                         /* if (newNode == _nodes.end())

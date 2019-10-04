@@ -1,11 +1,13 @@
 #include "graphedge.h"
 #include "graphnode.h"
+#include "chatbot.h"
 
 GraphNode::GraphNode(int id)
 {
     _id = id;
 }
 
+/*
 GraphNode::~GraphNode()
 {
     //// STUDENT CODE
@@ -16,7 +18,7 @@ GraphNode::~GraphNode()
     ////
     //// EOF STUDENT CODE
 }
-
+*/
 void GraphNode::AddToken(std::string token)
 {
     _answers.push_back(token);
@@ -36,18 +38,20 @@ void GraphNode::AddEdgeToChildNode(GraphEdge *edge)
 ////
 void GraphNode::MoveChatbotHere(ChatBot *chatbot)
 {
+    std::cout << "ChatBot Move Assignment Operator" << std::endl;
     _chatBot = chatbot;
     _chatBot->SetCurrentNode(this);
 }
 
 void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
+    std::cout << "ChatBot Move Constructor" << std::endl;
     newNode->MoveChatbotHere(_chatBot);
     _chatBot = nullptr; // invalidate pointer at source
 }
 ////
 //// EOF STUDENT CODE
-
+/*
 GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
 {
     //// STUDENT CODE
@@ -58,3 +62,4 @@ GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
     ////
     //// EOF STUDENT CODE
 }
+*/

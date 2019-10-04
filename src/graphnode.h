@@ -3,12 +3,12 @@
 
 #include <vector>
 #include <string>
-#include "chatbot.h"
+//#include "chatbot.h"// needs to be removed
 
 
 // forward declarations
 class GraphEdge;
-
+class ChatBot;
 class GraphNode
 {
 private:
