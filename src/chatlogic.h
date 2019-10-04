@@ -47,9 +47,9 @@ public:
         return _chatBot;
     }
     void SetPanelDialogHandle(ChatBotPanelDialog *dialog) { _panelDialog = dialog; }
+
     // proprietary functions
     void LoadAnswerGraphFromFile(std::string filename);
-
 };
 
 #endif /* CHATLOGIC_H_ */

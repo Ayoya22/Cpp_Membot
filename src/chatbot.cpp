@@ -8,47 +8,11 @@
 #include "graphedge.h"
 #include "chatbot.h"
 
-
-// constructor WITHOUT memory allocation
-ChatBot::ChatBot()
-{
-    // invalidate data handles
-    _image = nullptr;
-    _chatLogic = nullptr;
-    _rootNode = nullptr;
-}
-
-// constructor WITH memory allocation
-ChatBot::ChatBot(std::string filename)
-{
-    std::cout << "ChatBot Constructor" << std::endl;
-    
-    // invalidate data handles
-    _chatLogic = nullptr;
-    _rootNode = nullptr;
-
-    // load image into heap memory
-    _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
-}
-
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
-/*
-    // deallocate heap memory
-    if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
-    {
-        delete _image;
-        _image = NULL;
-    }
-*/
+
 }
-
-//// STUDENT CODE
-////
-
-////
-//// EOF STUDENT CODE
 
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
@@ -56,17 +20,16 @@ void ChatBot::ReceiveMessageFromUser(std::string message)
     typedef std::pair<GraphEdge *, int> EdgeDist;
     std::vector<EdgeDist> levDists; // format is <ptr,levDist>
 
-
-
-    for (size_t i = 0; i < _currentNode->GetNumberOfChildEdges(); ++i)
-    {
-        GraphEdge *edge = _currentNode->GetChildEdgeAtIndex(i);
-        for (auto keyword : edge->GetKeywords())
-        {
-            EdgeDist ed{edge, ComputeLevenshteinDistance(keyword, message)};
-            levDists.push_back(ed);
+    // START of Student Code
+    for(auto edge: _currentNode->GetEdgesToNodeChild()){
+        for(auto keys: edge->GetKeywords()){
+            EdgeDist edging{
+                edge, ComputeLevenshteinDistance(keys, message)
+            };
         }
     }
+
+    // END of student code
 
     // select best fitting edge to proceed along
     GraphNode *newNode;
@@ -98,7 +61,7 @@ void ChatBot::SetCurrentNode(GraphNode *node)
     std::string answer = answers.at(dis(generator));
 
     // send selected node answer to user
-    _chatLogic->SendMessageToUser(answer);
+   _chatLogic->GetChatBotPanelDialog()->PrintChatbotResponse(answer);
 }
 
 int ChatBot::ComputeLevenshteinDistance(std::string s1, std::string s2)
