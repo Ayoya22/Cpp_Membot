@@ -41,14 +41,15 @@ public:
     ~ChatLogic();
 
     // getter / setter
-    void SetPanelDialogHandle(ChatBotPanelDialog *panelDialog);
     void SetChatbotHandle(ChatBot *chatbot);
-
+    ChatBotPanelDialog *GetChatBotPanelDialog() { return _panelDialog; }
+    ChatBot *GetChatBot() {
+        return _chatBot;
+    }
+    void SetPanelDialogHandle(ChatBotPanelDialog *dialog) { _panelDialog = dialog; }
     // proprietary functions
     void LoadAnswerGraphFromFile(std::string filename);
-    void SendMessageToChatbot(std::string message);
-    void SendMessageToUser(std::string message);
-    wxBitmap *GetImageFromChatbot();
+
 };
 
 #endif /* CHATLOGIC_H_ */
