@@ -26,6 +26,7 @@ void ChatBot::ReceiveMessageFromUser(std::string message)
             EdgeDist edging{
                 edge, ComputeLevenshteinDistance(keys, message)
             };
+            levDists.push_back(edging);
         }
     }
 
