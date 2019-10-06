@@ -70,6 +70,22 @@ void ChatLogic::AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T 
     }
 }
 
+template <typename Tp>
+Tp *ChatLogic::AddItemToElementList(int id, std::vector<Tp *> &elements)
+{
+    //check if the current element's ID already exist
+    Tp *p = nullptr;
+    auto isExist = std::find_if(elements.begin(), elements.end(), [&id](Tp *&p){
+        return p->GetID() == id;
+    });
+    if(isExist!=elements.end()){
+        p = *isExist;
+    }else{
+        p = new Tp(id);
+        elements.push_back(p);
+    }
+    return p;
+}
 void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 {
     // load file with answer graph elements
@@ -246,19 +262,3 @@ wxBitmap *ChatLogic::GetImageFromChatbot()
     return _chatBot->GetImageHandle();
 }
 */
-template <typename Tp>
-Tp *ChatLogic::AddItemToElementList(int id, std::vector<Tp *> &elements)
-{
-    //check if the current element's ID already exist
-    Tp *p = nullptr;
-    auto isExist = std::find_if(elements.begin(), elements.end(), [&id](Tp *&p){
-        return p->GetID() == id;
-    });
-    if(isExist!=elements.end()){
-        p = *isExist;
-    }else{
-        p = new Tp(id);
-        elements.push_back(p);
-    }
-    return p;
-}
