@@ -250,15 +250,15 @@ template <typename Tp>
 Tp *ChatLogic::AddItemToElementList(int id, std::vector<Tp *> &elements)
 {
     //check if the current element's ID already exist
-    Tp *e = nullptr;
-    auto isExist = std::find_if(elements.begin(), elements.end(), [&id](Tp *&e){
-        return e->GetID() == id;
+    Tp *p = nullptr;
+    auto isExist = std::find_if(elements.begin(), elements.end(), [&id](Tp *&p){
+        return p->GetID() == id;
     });
     if(isExist!=elements.end()){
-        e = *isExist;
+        p = *isExist;
     }else{
-        e = new Tp(id);
-        elements.push_back(e);
+        p = new Tp(id);
+        elements.push_back(p);
     }
-    return e;
+    return p;
 }
