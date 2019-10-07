@@ -47,7 +47,7 @@ void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
     std::cout << "ChatBot Move Constructor" << std::endl;
     newNode->MoveChatbotHere(_chatBot);
-    _chatBot = nullptr; // invalidate pointer at source
+   // _chatBot = nullptr; // invalidate pointer at source
 }
 ////
 //// EOF STUDENT CODE
